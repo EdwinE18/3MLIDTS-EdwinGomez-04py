@@ -25,12 +25,12 @@ def guardar_valores():
     elif var_genero.get()==2:
         genero= "Mujer"
     ###Generar la cadena de carateres 
-    datos= "Nombres: "+nombre+"\n"+"Apellidos"+apellidos+"\n"+"Edad: "+edad+"años\n"+"Estatura: "+estatura+"\n"+"Telefons: "+telefono
+    datos= "Nombres: "+nombre+"\n"+"Apellidos"+apellidos+"\n"+"Edad: "+edad+"anos\n"+"Estatura: "+estatura+"\n"+"Telefons: "+telefono
     ###Guardar los datos en el archivo TXT
-    with open("302024Datos.txt","a") as archivo:
+    with open("3M2025Datos.txt","a") as archivo:
          archivo.write(datos+"\n\n")
     ###Mostrar mensaje de confirmacón
-    messagebox.showinfo("Información","Datos guardados con éxito: \n\n"+datos)
+    messagebox.showinfo("Informacion","Datos guardados con exito: \n\n"+datos)
     txtNombre.delete(0,tk.END)
     txtApellido.de1ete(0,tk.END)
     txtEdad.delete(0,tk.END)
@@ -39,8 +39,9 @@ def guardar_valores():
     var_genero.set(0)
 
 ventana = tk.Tk()
-ventana.geometry("520x500")
+ventana.geometry("420x400")
 ventana.title("Formulario de registro")
+ventana.configure(bg="lightblue")
 var_genero = tk.IntVar()
 
 lblNombre = tk.Label(ventana, text="Nombre: ")
@@ -55,7 +56,8 @@ lblTel = tk.Label(ventana, text = "Telefono: ")
 lblTel.pack()
 txtTelefono = tk.Entry()
 txtTelefono.pack()
-lblAge = tk.Entry()
+lblAge = tk.Label(ventana, text = "Edad: ")
+lblAge.pack()
 txtEdad = tk.Entry()
 txtEdad.pack()
 lbEsta = tk.Label(ventana, text = "Estatura: ")
@@ -70,10 +72,10 @@ rbMan.pack()
 rbWom = tk.Radiobutton(ventana, text = "Mujer", variable=var_genero,value=2)
 rbWom.pack()
 
-btnErase = tk.Button(ventana, text="Borrar")
-btnErase.pack()
-btnSave = tk.Button(ventana, text="guardar")
-btnSave.pack()
+btnBorrar = tk.Button(ventana, text="Borrar", command=borrar_fun)
+btnBorrar.pack()
+btnGuardar = tk.Button(ventana, text="Guardar", command=guardar_valores)
+btnGuardar.pack()
 
 ventana.mainloop()
 
